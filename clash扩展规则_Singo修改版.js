@@ -3,6 +3,7 @@
  * URL: https://github.com/dahaha-365/YaNet/
  * Mihomo Party 订阅链接：https://fastly.jsdelivr.net/gh/dahaha-365/YaNet@main/Mihomo/global_script.js
  * 2025-09-09 Singo修改，根据个人情况不同，添加一些规则
+ * 2025-09-13 Singo备注，该配置过于严格，需要匹配的规则有点多，实际有点不如另一种只用rule set的
  */
 
 /**
@@ -49,42 +50,37 @@ const ruleOptions = {
 // 统一配置 GeoX
 const geoxUrl = {
   geoip:
-    'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat',
+    // 'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat',
+    'https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.dat',
   geosite:
-    'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat',
-  country_lite: 'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb',
-  asn: 'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb',
+    // 'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat',
+    'https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat',
+  country_lite: 
+    // 'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb',
+    'https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country-lite.mmdb',
+  asn: 
+    // 'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb',
+    'https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb',
 }
 
 // 统一配置 ruleset
-const ruleset_applications = {
-  name: "applications",
-  format: "text",
-  behavior: "classical",
-  url: "https://cdn.jsdelivr.net/gh/DustinWin/geoip@mihomo-geodata/geoip.dat",
-  tolocalpath: "./ruleset/DustinWin/applications.list"
-}
-// const ruleset_adblockmihomo = {
-//   name: "adblockmihomo",
-//   format: "mrs",
-//   behavior: "domain",
-//   url: "https://github.com/217heidai/adblockfilters/raw/refs/heads/main/rules/adblockmihomo.mrs",
-//   tolocalpath: "./ruleset/adblockfilters/adblockmihomo.mrs"
+// ruleset_applications这里个geoip感觉功能合geox的geoip重复，抛弃使用
+// const ruleset_applications = {
+//   name: "applications",
+//   //format: "binary",
+//   behavior: "classical",
+//   url: "https://cdn.jsdelivr.net/gh/DustinWin/geoip@mihomo-geodata/geoip.dat",
+//   tolocalpath: "./ruleset/DustinWin/applications.dat"
 // }
 const ruleset_adblockmihomo = {
   name: "adblockmihomo",
   format: "yaml",
   behavior: "domain",
-  url: "https://gcore.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomo.yaml",
-  tolocalpath: "./ruleset/adblockfilters/adblockmihomo.yaml"
+  // url: "https://gcore.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomo.yaml",  //all
+  // tolocalpath: "./ruleset/adblockfilters/adblockmihomo.yaml"
+  url: "https://gcore.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomolite.yaml",  //lite，仅针对国内域名拦截，体积小完整版非常多，推荐
+  tolocalpath: "./ruleset/adblockfilters/adblockmihomolite.yaml"
 }
-// const ruleset_ai = {
-//   name: "ai",
-//   format: "text",
-//   behavior: "classical",
-//   url: "https://github.com/dahaha-365/YaNet/raw/refs/heads/dist/rulesets/mihomo/ai.list",
-//   tolocalpath: "./ruleset/YaNet/ai.list"
-// }
 const ruleset_categorybankjp = {
   name: "category-bank-jp",
   format: "mrs",
@@ -99,7 +95,7 @@ const ruleset_categorybankjp = {
  * 如果有需要前置的自定义规则，可以自行修改
  */
 const rules = [
-  'RULE-SET,applications,下载软件',
+  // 'RULE-SET,applications,下载软件',
   'PROCESS-NAME,SunloginClient,DIRECT',
   'PROCESS-NAME,SunloginClient.exe,DIRECT',
   'PROCESS-NAME,AnyDesk,DIRECT',
@@ -112,6 +108,9 @@ const rules = [
   'DOMAIN-SUFFIX,limoruirui.com,DIRECT',  //GitHub 文件加速
   'DOMAIN-SUFFIX,isteed.cc,DIRECT',  //GitHub 文件加速
   'DOMAIN-SUFFIX,monlor.com,DIRECT',  //GitHub 文件加速
+  'DOMAIN,my.microsoftpersonalcontent.com,DIRECT',  //微软onedrive服务
+  'PROCESS-NAME,OneDrive,DIRECT',  //微软onedrive程序
+  'PROCESS-NAME,OneDrive.exe,DIRECT',  //微软onedrive程序
 ]
 
 /**
@@ -124,73 +123,73 @@ const regionOptions = {
   excludeHighPercentage: true,
   regions: [
     {
-      name: '🇭🇰HK香港',
+      name: 'HK香港',
       regex: /港|🇭🇰|hk|hongkong|hong kong/i,
       ratioLimit: 2,
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hong_Kong.png',
     },
     {
-      name: '🇺🇸US美国',
+      name: 'US美国',
       regex: /美|🇺🇸|us|united state|america/i,
       ratioLimit: 2,
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png',
     },
     {
-      name: '🇯🇵JP日本',
+      name: 'JP日本',
       regex: /日本|🇯🇵|jp|japan/i,
       ratioLimit: 2,
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Japan.png',
     },
     {
-      name: '🇰🇷KR韩国',
+      name: 'KR韩国',
       regex: /韩|🇰🇷|kr|korea/i,
       ratioLimit: 2,
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Korea.png',
     },
     {
-      name: '🇸🇬SG新加坡',
+      name: 'SG新加坡',
       regex: /新加坡|🇸🇬|sg|singapore/i,
       ratioLimit: 2,
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Singapore.png',
     },
     {
-      name: '🇨🇳CN中国大陆',
+      name: 'CN中国大陆',
       regex: /中国|🇨🇳|cn|china/i,
       ratioLimit: 2,
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China_Map.png',
     },
     {
-      name: '🇹🇼TW台湾省',
+      name: 'TW台湾省',
       regex: /台湾|🇹🇼|tw|taiwan|tai wan/i,
       ratioLimit: 2,
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China.png',
     },
     {
-      name: '🇬🇧GB英国',
+      name: 'GB英国',
       regex: /英|🇬🇧|uk|united kingdom|great britain/i,
       ratioLimit: 2,
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_Kingdom.png',
     },
     {
-      name: '🇩🇪DE德国',
+      name: 'DE德国',
       regex: /德国|🇩🇪|de|germany/i,
       ratioLimit: 2,
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Germany.png',
     },
     {
-      name: '🇳🇱NL荷兰',
+      name: 'NL荷兰',
       regex: /\b(荷兰|nl|Netherlands)\b|🇳🇱/i, // 添加荷兰节点，并使用🇳🇱作为icon
       ratioLimit: 2,
       icon: '🇳🇱',
     },
     {
-      name: '🇲🇾MY马来西亚',
+      name: 'MY马来西亚',
       regex: /马来|🇲🇾|my|malaysia/i,
       ratioLimit: 2,
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Malaysia.png',
     },
     {
-      name: '🇹🇷TK土耳其',
+      name: 'TK土耳其',
       regex: /土耳其|🇹🇷|tk|turkey/i,
       ratioLimit: 2,
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Turkey.png',
@@ -240,31 +239,31 @@ const dnsConfig = {
   },
 }
 
-// 规则集通用配置
+// rule-set 规则集通用配置
 const ruleProviderCommon = {
   type: 'http',
   format: 'yaml',
-  interval: 86400,
+  interval: 86400,  //单位秒，合一天
 }
 
 // 代理组通用配置
 const groupBaseOption = {
-  interval: 3000,
-  timeout: 3000,
-  url: 'http://cp.cloudflare.com/generate_204',
+  interval: 300,  //单位秒，合5分钟
+  timeout: 3000,  //单位毫秒，合3秒钟
+  url: 'https://cp.cloudflare.com/generate_204',
   lazy: true,
   'max-failed-times': 3,
   hidden: false,
 }
 
 const ruleProviders = new Map()
-ruleProviders.set(ruleset_applications.name, {
-  ...ruleProviderCommon,
-  behavior: ruleset_applications.behavior,
-  format: ruleset_applications.format,
-  url: ruleset_applications.url,
-  path: ruleset_applications.tolocalpath,
-})
+// ruleProviders.set(ruleset_applications.name, {
+//   ...ruleProviderCommon,
+//   behavior: ruleset_applications.behavior,
+//   //format: ruleset_applications.format,
+//   url: ruleset_applications.url,
+//   path: ruleset_applications.tolocalpath,
+// })
 
 // 程序入口
 function main(config, filename) {
@@ -362,9 +361,9 @@ function main(config, filename) {
    * write-to-system如果设为true的话，有可能出现电脑时间不对的问题
    */
   config['ntp'] = {
-    enable: true,
+    enable: false,
     'write-to-system': false,
-    server: 'cn.ntp.org.cn',
+    server: 'ntp.aliyun.com',
   }
 
   config['geox-url'] = {
@@ -448,9 +447,11 @@ function main(config, filename) {
   }
 
 
-  // 修改默认节点策略组，将其他节点放在最前面
-  const defaultNodeProxies = ['直连', ...otherProxyGroups, ...proxyGroupsRegionNames, lowRatioGroup.name]
-
+  // 默认节点策略
+  const allProxies = config.proxies.map((b) => {
+    return b.name
+  })
+  const defaultNodeProxies = ['直连', ...allProxies, ...proxyGroupsRegionNames, lowRatioGroup.name]
   config['proxy-groups'] = [
     {
       ...groupBaseOption,
@@ -461,6 +462,7 @@ function main(config, filename) {
     },
   ]
 
+  // 低倍率 代理组
   config['proxy-groups'].push(lowRatioGroup)
 
   config.proxies = config?.proxies || []
@@ -470,6 +472,7 @@ function main(config, filename) {
     udp: true,
   })
 
+  // 跟踪分析 代理组
   if (ruleOptions.tracker) {
     rules.push('GEOSITE,tracker,跟踪分析')
     config['proxy-groups'].push({
@@ -481,6 +484,7 @@ function main(config, filename) {
     })
   }
 
+  // 广告过滤 代理组
   if (ruleOptions.ads) {
     rules.push('GEOSITE,category-ads-all,广告过滤')
     rules.push('RULE-SET,adblockmihomo,广告过滤')
@@ -500,19 +504,13 @@ function main(config, filename) {
     })
   }
 
+  // 国外AI 代理组
   if (ruleOptions.openai) {
     rules.push(
       'DOMAIN-SUFFIX,grazie.ai,国外AI',
       'DOMAIN-SUFFIX,grazie.aws.intellij.net,国外AI',
       //'RULE-SET,ai,国外AI',
     )
-    // ruleProviders.set(ruleset_ai.name, {
-    //   ...ruleProviderCommon,
-    //   behavior: ruleset_ai.behavior,
-    //   format: ruleset_ai.format,
-    //   url: ruleset_ai.url,
-    //   path: ruleset_ai.tolocalpath,
-    // })
     config['proxy-groups'].push({
       ...groupBaseOption,
       name: '国外AI',
@@ -602,7 +600,7 @@ function main(config, filename) {
       name: 'Spotify',
       type: 'select',
       proxies: ['默认节点', '直连', ...proxyGroupsRegionNames],
-      url: 'http://spclient.wg.spotify.com/signup/public/v1/account',
+      url: 'https://spclient.wg.spotify.com/signup/public/v1/account',
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Spotify.png',
     })
   }
@@ -614,7 +612,7 @@ function main(config, filename) {
       name: 'Pixiv',
       type: 'select',
       proxies: ['默认节点', '直连', ...proxyGroupsRegionNames],
-      url: 'http://spclient.wg.spotify.com/signup/public/v1/account',
+      url: 'https://spclient.wg.spotify.com/signup/public/v1/account',
       icon: 'https://play-lh.googleusercontent.com/8pFuLOHF62ADcN0ISUAyEueA5G8IF49mX_6Az6pQNtokNVHxIVbS1L2NM62H-k02rLM=w240-h480-rw',
     })
   }
@@ -674,7 +672,7 @@ function main(config, filename) {
       name: 'Telegram',
       type: 'select',
       proxies: ['默认节点', '直连', ...proxyGroupsRegionNames],
-      url: 'http://www.telegram.org/img/website_icon.svg',
+      url: 'https://www.telegram.org/img/website_icon.svg',
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Telegram.png',
     })
   }
@@ -724,7 +722,7 @@ function main(config, filename) {
       name: '苹果服务',
       type: 'select',
       proxies: ['默认节点', '直连', ...proxyGroupsRegionNames],
-      url: 'http://www.apple.com/library/test/success.html',
+      url: 'https://www.apple.com/library/test/success.html',
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Apple_2.png',
     })
   }
@@ -736,7 +734,7 @@ function main(config, filename) {
       name: '谷歌服务',
       type: 'select',
       proxies: ['默认节点', '直连', ...proxyGroupsRegionNames],
-      url: 'http://www.google.com/generate_204',
+      url: 'https://www.google.com/generate_204',
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Google_Search.png',
     })
   }
@@ -754,13 +752,13 @@ function main(config, filename) {
   }
 
   if (ruleOptions.microsoft) {
-    rules.push('GEOSITE,microsoft@cn,国内网站', 'GEOSITE,microsoft,微软服务')
+    rules.push('GEOSITE,microsoft@cn,国内网站', 'GEOSITE,onedrive,国内网站', 'GEOSITE,microsoft,微软服务')
     config['proxy-groups'].push({
       ...groupBaseOption,
       name: '微软服务',
       type: 'select',
       proxies: ['默认节点', '直连', ...proxyGroupsRegionNames],
-      url: 'http://www.msftconnecttest.com/connecttest.txt',
+      url: 'https://www.msftconnecttest.com/connecttest.txt',
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Microsoft.png',
     })
   }
@@ -812,7 +810,7 @@ function main(config, filename) {
       name: '国内网站',
       type: 'select',
       proxies: ['直连', '默认节点', ...proxyGroupsRegionNames],
-      url: 'http://wifi.vivo.com.cn/generate_204',
+      url: 'https://wifi.vivo.com.cn/generate_204',
       icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/StreamingCN.png',
     },
     {

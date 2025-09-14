@@ -1,0 +1,77 @@
+# Profile Enhancement Merge Template for Clash Verge
+
+rules:
+  - 'DOMAIN-SUFFIX,girigirilove.com,DIRECT'
+  - 'DOMAIN-SUFFIX,github.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,githubusercontent.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,youtu.be,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,sentry.io,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,🔰 节点选择.moe,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,xhcdn.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,1fichier.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,api.sofascore.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,api.sofascore.app,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,sofascore.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,seaart.ai,🔰 节点选择' #AI绘画生成
+  - 'DOMAIN-SUFFIX,akamaized.net,🔰 节点选择' #CDN
+  - 'DOMAIN-SUFFIX,javdb.com,🔰 节点选择' #av数据库
+  - 'DOMAIN-SUFFIX,wallhaven.cc,🔰 节点选择' #壁纸
+  - 'DOMAIN-SUFFIX,gamebanana.com,🔰 节点选择' #mod
+  - 'DOMAIN-SUFFIX,rule34video.com,🔰 节点选择' #ero video
+  - 'DOMAIN-SUFFIX,patreon.com,🔰 节点选择' #ero video
+  - 'DOMAIN-SUFFIX,sxptnt.cn,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,stoneshard.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,sukebei.nyaa.si,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,capology.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,haixingtiyu.live,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,greasyfork.org,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,labs.google,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,killercoda.com,🔰 节点选择' #在线k8s
+  - 'DOMAIN-SUFFIX,hxty.live,🔰 节点选择'
+  
+
+
+  # hanime1
+  - 'DOMAIN-SUFFIX,hanime1.me,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,hembed.com,🔰 节点选择'
+
+  # steam
+  - 'DOMAIN-SUFFIX,steampowered.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,steamstatic.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,steamcommunity.com,🔰 节点选择'
+
+  # battlenet  
+  - 'DOMAIN-SUFFIX,battle.net,🔰 节点选择'  
+  - 'DOMAIN-SUFFIX,battle.com,🔰 节点选择'  
+  - 'DOMAIN-SUFFIX,blizzard.com,🔰 节点选择'  
+  - 'DOMAIN-SUFFIX,api.blizzard.com,🔰 节点选择'  
+  - 'DOMAIN-SUFFIX,overwolf.com,🔰 节点选择'  
+  - 'DOMAIN-SUFFIX,firestoneapp.com,🔰 节点选择'  
+  - 'DOMAIN-SUFFIX,heartharena.com,🔰 节点选择'
+
+  # e-hentai
+  - 'DOMAIN-SUFFIX,hath.network,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,e-hentai.org,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,ehgt.org,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,198.18.0.1:6496,🔰 节点选择'
+
+  # google
+  - 'DOMAIN-SUFFIX,google.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,googleapis.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,gstatic.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,gmail.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,googleusercontent.com,🔰 节点选择'
+
+  #91mh
+  - 'DOMAIN-SUFFIX,91mh01.xyz,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,jyaaa.club,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,img.jiuyaomanhua.com,🔰 节点选择'
+  
+  #missav
+  - 'DOMAIN-SUFFIX,missav.live,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,missav.ws,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,surrit.com,🔰 节点选择'
+
+  #docker
+  - 'DOMAIN-SUFFIX,hub.docker.com,🔰 节点选择'
+  - 'DOMAIN-SUFFIX,docker.io,🔰 节点选择'
